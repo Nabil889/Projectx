@@ -1,0 +1,59 @@
+.header {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 46rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.center {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+
+.start {
+  justify-items: start;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.5rem;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+.title {
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  font-weight: 750;
+}
+
+.description {
+  display: grid;
+  gap: 0.9rem;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+}
+
+.inverted .eyebrow {
+  color: var(--color-accent-400);
+}
+
+.inverted .title {
+  color: #fff;
+}
+
+.inverted .description {
+  color: rgb(255 255 255 / 0.8);
+}

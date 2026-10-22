@@ -1,0 +1,31 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-primary-800);
+}
+
+.mark {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.markBackground {
+  fill: var(--color-primary-700);
+}
+
+.name {
+  font-size: 1.15rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.inverted {
+  color: #fff;
+}
+
+.inverted .markBackground {
+  fill: rgb(255 255 255 / 0.12);
+}
