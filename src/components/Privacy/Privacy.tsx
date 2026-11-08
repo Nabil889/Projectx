@@ -6,7 +6,7 @@ import styles from './Privacy.module.css'
 
 export function Privacy() {
   return (
-    <section id="datenschutz" className={styles.section} aria-labelledby="privacy-title">
+    <section id="sicherheit" className={styles.section} aria-labelledby="privacy-title">
       <div className={`container ${styles.inner}`}>
         <div className={styles.intro}>
           <SectionHeader

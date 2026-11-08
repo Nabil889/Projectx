@@ -259,8 +259,11 @@ export function DemoForm() {
             <label htmlFor={fieldId('privacyAccepted')} className={styles.checkboxLabel}>
               Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage
               verwendet werden. Weitere Informationen finden Sie in der{' '}
-              {/* TODO(company-data): Link auf die echte Datenschutzerklärung setzen. */}
-              <a href={siteConfig.privacyPolicyHref}>Datenschutzerklärung</a>.{' '}
+              {/* Neuer Tab, damit bereits eingegebene Formulardaten erhalten bleiben. */}
+              <a href={siteConfig.privacyPolicyHref} target="_blank" rel="noopener">
+                Datenschutzerklärung
+              </a>
+              .{' '}
               <span className={styles.required} aria-hidden="true">*</span>
             </label>
           </div>

@@ -11,7 +11,7 @@ import type {
 export const navLinks: NavLink[] = [
   { label: 'Funktionsweise', href: '#funktionsweise' },
   { label: 'Vorteile', href: '#vorteile' },
-  { label: 'Datenschutz', href: '#datenschutz' },
+  { label: 'Sicherheit', href: '#sicherheit' },
   { label: 'Demo', href: '#demo' },
 ]
 

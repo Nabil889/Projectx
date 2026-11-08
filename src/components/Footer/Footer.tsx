@@ -29,7 +29,6 @@ export function Footer() {
 
         <nav aria-label="Rechtliches" className={styles.column}>
           <h2 className={styles.heading}>Rechtliches</h2>
-          {/* TODO(company-data): Echte Seiten für Datenschutz, Impressum und Kontakt verlinken (siehe siteConfig). */}
           <ul className={styles.links}>
             {siteConfig.legalLinks.map((link) => (
               <li key={link.label}>

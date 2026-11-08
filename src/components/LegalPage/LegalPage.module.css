@@ -1,0 +1,75 @@
+.section {
+  padding-top: calc(var(--header-height) + clamp(2rem, 5vw, 3.5rem));
+  padding-bottom: var(--section-space);
+  background: var(--color-background-alt);
+}
+
+.inner {
+  display: grid;
+  gap: 2rem;
+  max-width: 880px;
+}
+
+.back {
+  justify-self: start;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+.header {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+}
+
+.meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Fliesstext: nur direkte Kinder, damit eingebettete Karten unberührt bleiben */
+.prose {
+  color: var(--color-text-muted);
+  overflow-wrap: break-word;
+}
+
+.prose > * + * {
+  margin-top: 0.85rem;
+}
+
+.prose > h2 {
+  margin-top: 2.5rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.4rem);
+}
+
+.prose > h3 {
+  margin-top: 1.5rem;
+  font-size: 1.0625rem;
+}
+
+.prose > h2 + *,
+.prose > h3 + * {
+  margin-top: 0.6rem;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose > ul {
+  display: grid;
+  gap: 0.35rem;
+  padding-left: 1.25rem;
+}
+
+.prose strong {
+  color: var(--color-text);
+}

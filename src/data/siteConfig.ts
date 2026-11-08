@@ -10,12 +10,11 @@ export const siteConfig = {
   /** TODO(company-data): Finalen Produktnamen eintragen. */
   productName: 'EduGo Learn',
   /** TODO(company-data): Rechtlichen Firmennamen eintragen (inkl. Rechtsform). */
-  companyName: 'Edugo Learn',
-  /** TODO(company-data): Links auf echte Seiten für Datenschutzerklärung, Impressum und Kontakt setzen. */
-  privacyPolicyHref: '#',
+  companyName: 'Edugo-Learn',
+  privacyPolicyHref: '#datenschutzerklaerung',
   legalLinks: [
-    { label: 'Datenschutz', href: '#' },
-    { label: 'Impressum', href: '#' },
+    { label: 'Datenschutzerklärung', href: '#datenschutzerklaerung' },
+    { label: 'Impressum', href: '#impressum' },
     { label: 'Kontakt', href: '#demo' },
   ] satisfies NavLink[],
 }
