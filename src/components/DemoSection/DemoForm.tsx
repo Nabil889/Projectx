@@ -17,25 +17,16 @@ type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
 const fieldId = (field: DemoFormField) => `demo-${field}`
 const errorId = (field: DemoFormField) => `demo-${field}-error`
 
-/**
- * TODO(api): Hier muss die echte API für Demo-Anfragen angebunden werden.
- * Solange kein Backend existiert, wird KEINE Anfrage versendet. Die Funktion schlägt bewusst fehl,
- * damit auf der Website keine erfolgreiche Übermittlung vorgetäuscht wird. Besucher sehen dann
- * eine neutrale Fehlermeldung (siehe `status === 'error'`).
- *
- * Beispiel für eine spätere Umsetzung:
- *   const response = await fetch('/api/demo-requests', {
- *     method: 'POST',
- *     headers: { 'Content-Type': 'application/json' },
- *     body: JSON.stringify(values),
- *   })
- *   if (!response.ok) throw new Error('Request failed')
- *
- * Zusätzlich zu ergänzen: Spam-Schutz und serverseitige Validierung.
- */
-async function submitDemoRequest(values: DemoFormValues): Promise<void> {
-  void values
-  throw new Error('Demo request API is not connected yet.')
+async function submitDemoRequest(values: DemoFormValues, website: string): Promise<void> {
+  const response = await fetch('/api/demo-requests', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...values, website }),
+    signal: AbortSignal.timeout(15000),
+  })
+  if (!response.ok) throw new Error('Request failed')
+  const result = await response.json()
+  if (result.ok !== true) throw new Error('Request failed')
 }
 
 export function DemoForm() {
@@ -43,6 +34,7 @@ export function DemoForm() {
   const [errors, setErrors] = useState<DemoFormErrors>({})
   const [touched, setTouched] = useState<Partial<Record<DemoFormField, boolean>>>({})
   const [status, setStatus] = useState<SubmitStatus>('idle')
+  const honeypotRef = useRef<HTMLInputElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
   const successRef = useRef<HTMLDivElement>(null)
 
@@ -85,7 +77,7 @@ export function DemoForm() {
 
     setStatus('submitting')
     try {
-      await submitDemoRequest(values)
+      await submitDemoRequest(values, honeypotRef.current?.value ?? '')
       setStatus('success')
       requestAnimationFrame(() => successRef.current?.focus())
     } catch {
@@ -133,6 +125,10 @@ export function DemoForm() {
 
   return (
     <form ref={formRef} className={styles.form} onSubmit={handleSubmit} noValidate>
+      <div hidden aria-hidden="true">
+        <label htmlFor="demo-website">Website</label>
+        <input id="demo-website" name="website" ref={honeypotRef} tabIndex={-1} autoComplete="off" />
+      </div>
       <p className={styles.requiredNote}>
         Pflichtfelder sind mit <span aria-hidden="true">*</span>
         <span className="visually-hidden">einem Sternchen</span> gekennzeichnet.
